@@ -1,13 +1,13 @@
-# langnang-temp.github.io
+# static
 
 ## Branches
 
 ```sh
-┌──────────────────────────────────────────┐       ┌───────────┐       ┌──────────┐
-|                                          |       |           |       |          |
-|  @langnang-temp/langnang-temp.github.io  | ====> |  develop  | ====> |  master  |
-|            Sync to remote                |       |           |       |          |
-└──────────────────────────────────────────┘       └───────────┘       └──────────┘
+┌──────────────────────────────────────────┐       ┌─────────────────────────┐       ┌───────────┐       ┌──────────┐
+|                                          |       |                         |       |           |       |          |
+|  @langnang-temp/langnang-temp.github.io  | ====> |  @langnang-temp/static  | ====> |  develop  | ====> |  master  |
+|           Sync from template             |       |     Sync to remote      |       |           |       |          |
+└──────────────────────────────────────────┘       └─────────────────────────┘       └───────────┘       └──────────┘
 ```
 
 ### Sync to remote
