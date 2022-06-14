@@ -13,10 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: Merge
+      - name: Merge temp
         uses: devmasx/merge-branch@master
         with:
           type: now
           from_branch: "@langnang-temp/langnang-temp.github.io"
           target_branch: "@langnang-temp/langnang-temp.github.io"
+          github_token: ${{ github.GITHUB_TOKEN }}
+      
+       - name: Merge temp -> develop
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: "@langnang-temp/langnang-temp.github.io"
+          target_branch: "develop"
           github_token: ${{ github.GITHUB_TOKEN }}
