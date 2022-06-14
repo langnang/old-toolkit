@@ -26,5 +26,5 @@ jobs:
         with:
           type: now
           from_branch: "@langnang-temp/langnang-temp.github.io"
-          target_branch: "develop"
+          target_branch: "@langnang-temp/langnang-temp.github.io"
           github_token: ${{ github.GITHUB_TOKEN }}
