@@ -36,22 +36,42 @@
         </form>
       </div>
       <div class="col-md-12" style="margin-bottom: 10px;">
-        <button class="btn btn-default" onclick="callback(CryptoJS.enc.Utf8.parse,CryptoJS.enc.Base64.stringify)">Base64</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.MD5)">MD5</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.SHA1)">SHA1</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.SHA256)">SHA256</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.SHA512)">SHA512</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.SHA3)">SHA3</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.RIPEMD160)">RIPEMD160</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.HmacMD5)">HmacMD5</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA1)">HmacSHA1</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA256)">HmacSHA256</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA512)">HmacSHA512</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.PBKDF2)">PBKDF2</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.AES.encrypt)">AES</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.DES.encrypt)">DES</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.Rabbit.encrypt)">Rabbit</button>
-        <button class="btn btn-default" onclick="callback(CryptoJS.RC4.encrypt)">RC4</button>
+        加密：
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.enc.Utf8.parse,CryptoJS.enc.Base64.stringify)">Base64</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.MD5)">MD5</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.SHA1)">SHA1</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.SHA256)">SHA256</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.SHA512)">SHA512</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.SHA3)">SHA3</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.RIPEMD160)">RIPEMD160</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.HmacMD5)">HmacMD5</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.HmacSHA1)">HmacSHA1</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.HmacSHA256)">HmacSHA256</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.HmacSHA512)">HmacSHA512</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.PBKDF2)">PBKDF2</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.AES.encrypt)">AES</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.DES.encrypt)">DES</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.Rabbit.encrypt)">Rabbit</button>
+        <button class="btn btn-default" onclick="encrypt(CryptoJS.RC4.encrypt)">RC4</button>
+      </div>
+      <div class="col-md-12" style="margin-bottom: 10px;">
+        解密：
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.enc.Utf8.parse,CryptoJS.enc.Base64.stringify)">Base64</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.MD5)">MD5</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.SHA1)">SHA1</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.SHA256)">SHA256</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.SHA512)">SHA512</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.SHA3)">SHA3</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.RIPEMD160)">RIPEMD160</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.HmacMD5)">HmacMD5</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.HmacSHA1)">HmacSHA1</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.HmacSHA256)">HmacSHA256</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.HmacSHA512)">HmacSHA512</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.PBKDF2)">PBKDF2</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.AES.encrypt)">AES</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.DES.encrypt)">DES</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.Rabbit.encrypt)">Rabbit</button>
+        <button class="btn btn-default" onclick="decrypt(CryptoJS.RC4.encrypt)">RC4</button>
       </div>
       <div class="col-md-12">
         <form>
@@ -70,13 +90,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <script>
-    function callback(...fns) {
+    function encrypt(...fns) {
       if (fns.every(item => !item)) return
       $('#content').val(fns.reduce(function (total, fn) {
         return fn(total)
       }, $('#input').val()))
     }
-
+    function decrypt(...fns) {
+      if (fns.every(item => !item)) return
+      $('#input').val(fns.reduce(function (total, fn) {
+        return fn(total)
+      }, $('#content').val()))
+    }
   </script>
 </body>
 
