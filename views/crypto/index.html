@@ -35,26 +35,30 @@
           </div>
         </form>
       </div>
+      <div class="col-md-12" style="margin-bottom: 10px;">
+        <button class="btn btn-default" onclick="callback(CryptoJS.enc.Utf8.parse,CryptoJS.enc.Base64.stringify)">Base64</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.MD5)">MD5</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.SHA1)">SHA1</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.SHA256)">SHA256</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.SHA512)">SHA512</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.SHA3)">SHA3</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.RIPEMD160)">RIPEMD160</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.HmacMD5)">HmacMD5</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA1)">HmacSHA1</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA256)">HmacSHA256</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.HmacSHA512)">HmacSHA512</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.PBKDF2)">PBKDF2</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.AES.encrypt)">AES</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.DES.encrypt)">DES</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.Rabbit.encrypt)">Rabbit</button>
+        <button class="btn btn-default" onclick="callback(CryptoJS.RC4.encrypt)">RC4</button>
+      </div>
       <div class="col-md-12">
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation">
-            <a href="#md5" aria-controls="md5" role="tab" data-toggle="tab">MD5</a>
-          </li>
-          <li role="presentation">
-            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">SHA-1</a>
-          </li>
-          <li role="presentation">
-            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">SHA-2</a>
-          </li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane" id="md5">...</div>
-          <div role="tabpanel" class="tab-pane" id="profile">...</div>
-          <div role="tabpanel" class="tab-pane" id="messages">...</div>
-          <div role="tabpanel" class="tab-pane" id="settings">...</div>
-        </div>
+        <form>
+          <div class="form-group">
+            <textarea id="content" type="text" class="form-control" placeholder="加密后的内容" rows="5"></textarea>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -64,15 +68,14 @@
   </div>
   <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <script>
-    $(document).ready(function () {
-      $('.nav-tabs a[href="#md5"]').click(function (e) {
-        // e.preventDefault()
-        // $(this).tab('show')
-        console.log(this);
-        console.log($("#input").val())
-      })
-    })
+    function callback(...fns) {
+      if (fns.every(item => !item)) return
+      $('#content').val(fns.reduce(function (total, fn) {
+        return fn(total)
+      }, $('#input').val()))
+    }
 
   </script>
 </body>
