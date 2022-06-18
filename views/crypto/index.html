@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto | Langnang Toolkit</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" />
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="row">
+      <h1 class="text-center">Crypto</h1>
+      <div class="col-md-12" style="margin-bottom: 10px;">
+        <a class="btn btn-info" target="_blank" href="https://v3.bootcss.com/">
+          Bootstrap v3
+        </a>
+        <a class="btn btn-info" target="_blank" href="https://jquery.com/">
+          jQuery
+        </a>
+        <a class="btn btn-info" target="_blank" href="https://cryptojs.gitbook.io/docs/">
+          CryptoJs
+        </a>
+      </div>
+      <div class="col-md-12">
+        <form>
+          <div class="form-group">
+            <input id="input" type="text" class="form-control" placeholder="需要加密的内容" />
+          </div>
+          <div class="form-group">
+            <input id="secret" type="text" class="form-control" placeholder="加密的密钥" />
+          </div>
+        </form>
+      </div>
+      <div class="col-md-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation">
+            <a href="#md5" aria-controls="md5" role="tab" data-toggle="tab">MD5</a>
+          </li>
+          <li role="presentation">
+            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">SHA-1</a>
+          </li>
+          <li role="presentation">
+            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">SHA-2</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane" id="md5">...</div>
+          <div role="tabpanel" class="tab-pane" id="profile">...</div>
+          <div role="tabpanel" class="tab-pane" id="messages">...</div>
+          <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Nav tabs -->
+
+  </div>
+  <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.nav-tabs a[href="#md5"]').click(function (e) {
+        // e.preventDefault()
+        // $(this).tab('show')
+        console.log(this);
+        console.log($("#input").val())
+      })
+    })
+
+  </script>
+</body>
+
+</html>
