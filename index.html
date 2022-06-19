@@ -9,14 +9,25 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" />
   <style>
+    .thumbnail .caption {
+      padding: 9px 0;
+    }
+
     .thumbnail .caption p {
       margin: 0;
-      font-size: 36px;
+      font-size: 30px;
     }
 
     a,
-    a:hover {
+    a:hover,
+    a:visited,
+    a:active {
       text-decoration: none;
+    }
+
+    a.btn {
+      margin-right: 6px;
+      margin-bottom: 6px;
     }
   </style>
 </head>
@@ -24,27 +35,42 @@
 <body>
   <div id="app" class="container">
     <h1 class="text-center">Toolkit</h1>
-    <div class="row text-center">
-      <div class="col-md-1 col-sm-2 col-xs-3">
-        <a href="./views/crypto">
+    <div class="row">
+      <div v-for="(item,index) in views" :key="index" :class="['col-md-'+(item.span||1),'col-sm-'+((item.span||1)+1),'col-xs-'+((item.span||1)+2)]">
+        <a :href="item.path">
           <div class="thumbnail">
-            <div class="caption">
-              <p>密</p>
+            <div class="caption text-center">
+              <p>{{item.name}}</p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-md-1 col-sm-2 col-xs-3">
-        <a href="./views/xlsx">
-          <div class="thumbnail">
-            <div class="caption">
-              <p>表</p>
-            </div>
-          </div>
+      <div class="col-md-12">
+        <a class="btn btn-default" target="_blank" v-for="(item,index) in dependencies" :key="index" :href="item.home">
+          {{item.name}} {{item.version}}
         </a>
       </div>
     </div>
+
   </div>
+  <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="./router/index.js"></script>
+  <script src="./store/index.js"></script>
+  <script>
+    window.onload = function () {
+      console.log(store);
+      new Vue({
+        el: '#app',
+        data: {
+          views: router,
+          dependencies: store.dependencies
+        }
+      })
+    }
+
+  </script>
 </body>
 
 </html>
