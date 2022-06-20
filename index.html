@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Langnang Toolkit</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" />
   <style>
     .thumbnail .caption {
       padding: 9px 0;
@@ -15,7 +14,7 @@
 
     .thumbnail .caption p {
       margin: 0;
-      font-size: 30px;
+      font-size: 36px;
     }
 
     a,
@@ -25,7 +24,7 @@
       text-decoration: none;
     }
 
-    a.btn {
+    .btn-group {
       margin-right: 6px;
       margin-bottom: 6px;
     }
@@ -34,9 +33,9 @@
 
 <body>
   <div id="app" class="container">
-    <h1 class="text-center">Toolkit</h1>
     <div class="row">
-      <div v-for="(item,index) in views" :key="index" :class="['col-md-'+(item.span||1),'col-sm-'+((item.span||1)+1),'col-xs-'+((item.span||1)+2)]">
+      <h1 class="text-center">Toolkit</h1>
+      <div v-for="(item,index) in views" :key="index" :class="['col-md-'+(item.span||2),'col-sm-'+((item.span||2)+1),'col-xs-'+((item.span||2)+2)]">
         <a :href="item.path">
           <div class="thumbnail">
             <div class="caption text-center">
@@ -45,10 +44,20 @@
           </div>
         </a>
       </div>
-      <div class="col-md-12">
-        <a class="btn btn-default" target="_blank" v-for="(item,index) in dependencies" :key="index" :href="item.home">
-          {{item.name}} {{item.version}}
+    </div>
+    <div class="row">
+      <div v-for="(item,index) in sites" :key="index" :class="['col-md-'+(item.span||2),'col-sm-'+((item.span||2)+1),'col-xs-'+((item.span||2)+2)]">
+        <a :href="item.href" target="_blank">
+          <div class="thumbnail">
+            <div class="caption text-center">
+              <p>{{item.name}}</p>
+            </div>
+          </div>
         </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="packages">
       </div>
     </div>
 
@@ -60,12 +69,16 @@
   <script src="./store/index.js"></script>
   <script>
     window.onload = function () {
-      console.log(store);
+      writePackages(document.getElementById('packages'))
       new Vue({
         el: '#app',
         data: {
           views: router,
-          dependencies: store.dependencies
+          dependencies: store.state.dependencies,
+          sites: [
+            { name: "CodePen", href: "https://codepen.io/" },
+            { name: "CodeSandbox", href: "https://codesandbox.io/", span: 3 },
+          ]
         }
       })
     }
